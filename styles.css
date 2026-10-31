@@ -1,834 +1,272 @@
-/* ==========================================================================
-   ICT324 Academic Research Webpage Styles
-   Design Principle: Minimalist, scholarly, neat, professional (no flashy animations)
-   ========================================================================== */
-
 :root {
-  --bg-page: #f8fafc;
-  --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-body: #334155;
-  --text-muted: #64748b;
-  --border-light: #e2e8f0;
-  --border-subtle: #cbd5e1;
-  --primary: #1e3a8a;       /* Deep academic navy */
-  --primary-hover: #172554;
-  --primary-light: #eff6ff;
-  --accent: #0284c7;        /* Crisp blue */
-  --accent-light: #f0f9ff;
-  --success: #15803d;
-  --success-bg: #f0fdf4;
-  --warning-border: #fcd34d;
-  --warning-bg: #fffbeb;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: 'Newsreader', Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: 'JetBrains Mono', Consolas, Monaco, "Courier New", monospace;
-  --max-width: 920px;
-  --radius: 8px;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --body: #334155;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #1e3a8a;
+  --accent: #0284c7;
+  --accent-bg: #f0f9ff;
+  --green: #15803d;
+  --green-bg: #f0fdf4;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* Base Reset */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg-page);
-  color: var(--text-body);
-  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--font);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* --------------------------------------------------------------------------
-   Sticky Top Navigation Bar
-   -------------------------------------------------------------------------- */
-.site-header {
-  position: sticky;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border-light);
-  z-index: 100;
-}
-
-.header-container {
-  max-width: var(--max-width);
+main {
+  max-width: 780px;
   margin: 0 auto;
-  padding: 0.85rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  padding: 2rem 1.5rem 3rem;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+/* Hero / Title */
+.hero {
+  text-align: center;
+  padding: 3rem 0 2.5rem;
 }
 
-.badge-tag {
-  background-color: var(--primary-light);
-  color: var(--primary);
+.tag {
+  display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
-  border: 1px solid #bfdbfe;
   text-transform: uppercase;
-}
-
-.brand-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: color 0.15s ease;
-}
-
-.nav-links a:hover {
+  letter-spacing: 0.05em;
   color: var(--primary);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
 }
 
-/* --------------------------------------------------------------------------
-   Main Container
-   -------------------------------------------------------------------------- */
-.page-container {
-  max-width: var(--max-width);
-  margin: 2.5rem auto 4rem auto;
-  padding: 0 1.5rem;
-}
-
-/* --------------------------------------------------------------------------
-   Paper Header (Title, Metadata, Authors)
-   -------------------------------------------------------------------------- */
-.paper-header {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 2.5rem 2rem 2rem 2rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.meta-strip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.meta-item strong {
-  color: var(--text-main);
-  font-weight: 600;
-}
-
-.meta-separator {
-  color: var(--border-subtle);
-}
-
-.paper-title {
-  font-family: var(--font-sans);
+.hero h1 {
   font-size: 2rem;
   font-weight: 700;
-  line-height: 1.28;
-  color: var(--text-main);
-  margin-bottom: 0.75rem;
+  color: var(--text);
+  margin: 0.75rem 0 0.5rem;
   letter-spacing: -0.02em;
 }
 
-.paper-subtitle {
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 1.75rem;
-}
-
-.authors-card {
-  background-color: var(--bg-page);
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-}
-
-.author-label {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.author-names {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.author-badge {
-  background-color: #ffffff;
-  color: var(--text-main);
-  font-size: 0.88rem;
-  font-weight: 500;
-  padding: 0.35rem 0.8rem;
-  border-radius: 4px;
-  border: 1px solid var(--border-subtle);
-}
-
-/* --------------------------------------------------------------------------
-   Rubric Highlight: 1-Sentence Core Research Question
-   -------------------------------------------------------------------------- */
-.highlight-banner {
-  background-color: #f8fafc;
-  border: 2px solid var(--accent);
-  border-left: 6px solid var(--accent);
-  border-radius: var(--radius);
-  padding: 1.5rem 1.75rem;
-  margin-bottom: 2.5rem;
-  background: linear-gradient(to right, #f0f9ff, #ffffff);
-}
-
-.highlight-label {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--accent);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.6rem;
-}
-
-.highlight-quote {
-  font-family: var(--font-serif);
-  font-size: 1.28rem;
-  line-height: 1.55;
-  color: var(--text-main);
-  font-weight: 400;
-  font-style: italic;
-  margin: 0;
-}
-
-/* --------------------------------------------------------------------------
-   Content Section & Typography
-   -------------------------------------------------------------------------- */
-.content-section {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 2.25rem 2rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.section-badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.4rem;
-}
-
-.content-section h2 {
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 1rem;
-  letter-spacing: -0.01em;
-}
-
-.section-intro {
-  font-size: 1rem;
-  color: var(--text-muted);
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
   margin-bottom: 1.5rem;
 }
 
-.text-body p {
-  margin-bottom: 1.2rem;
-  color: var(--text-body);
+.authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.text-body p:last-child {
-  margin-bottom: 0;
+.authors span {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
 }
 
-/* Callout Box */
-.callout-box {
-  background-color: #f1f5f9;
-  border-left: 4px solid var(--primary);
-  border-radius: 0 6px 6px 0;
-  padding: 1.15rem 1.4rem;
-  margin: 1.5rem 0;
+.institution {
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
-.callout-box h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 0.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+/* Highlight Box (Research Question) */
+.highlight {
+  background: linear-gradient(to right, var(--accent-bg), var(--card));
+  border: 2px solid var(--accent);
+  border-left: 6px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
-.callout-box p {
-  margin: 0;
-  font-size: 0.96rem;
-  color: var(--text-body);
-}
-
-/* --------------------------------------------------------------------------
-   Research Questions (RQ Cards)
-   -------------------------------------------------------------------------- */
-.rq-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-.rq-card {
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.4rem;
-  border-top: 3px solid var(--primary);
-}
-
-.rq-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--primary);
+.highlight h2 {
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.35rem;
-}
-
-.rq-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-main);
+  color: var(--accent);
   margin-bottom: 0.5rem;
 }
 
-.rq-card p {
-  font-size: 0.95rem;
-  color: var(--text-body);
+.highlight blockquote {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text);
   line-height: 1.6;
 }
 
-/* --------------------------------------------------------------------------
-   Data Metrics & Benchmark Grid (>= 500 rows proof)
-   -------------------------------------------------------------------------- */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.stat-card {
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.25rem 1rem;
-  text-align: center;
-}
-
-.stat-card.highlight-stat {
-  background-color: var(--success-bg);
-  border-color: #bbf7d0;
-}
-
-.stat-card.highlight-stat .stat-value {
-  color: var(--success);
-}
-
-.stat-value {
-  font-size: 1.45rem;
+.card h2 {
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--primary);
-  line-height: 1.2;
-  margin-bottom: 0.35rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
 }
 
-.stat-label {
-  font-size: 0.82rem;
+.card p { margin-bottom: 0.75rem; }
+.card p:last-child { margin-bottom: 0; }
+
+.card ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.card li { margin-bottom: 0.4rem; }
+
+code {
+  font-size: 0.85em;
+  background: #f1f5f9;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th {
+  text-align: left;
+  background: var(--bg);
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--text);
+  padding: 0.7rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: none; }
+
+/* Stats Row */
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 0.5rem;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.stat span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.stat.green { background: var(--green-bg); border-color: #bbf7d0; }
+.stat.green strong { color: var(--green); }
+
+/* Source Links */
+.source-link {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.source-link:last-child { margin-bottom: 0; }
+
+.source-link h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
   margin-bottom: 0.25rem;
 }
 
-.stat-sub {
-  font-size: 0.74rem;
-  color: var(--text-muted);
+.source-link p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
 }
 
-/* --------------------------------------------------------------------------
-   Data Sources Cards & Action Buttons
-   -------------------------------------------------------------------------- */
-.source-links-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.source-card {
-  background-color: #ffffff;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.source-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.source-type {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-}
-
-.source-status {
-  font-size: 0.7rem;
-  font-weight: 600;
-  background-color: #dbeafe;
-  color: #1e40af;
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-}
-
-.source-card h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 0.6rem;
-}
-
-.source-card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.55;
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
-}
-
-.source-action {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.btn-primary, .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.1rem;
-  border-radius: 6px;
+.source-link a {
   font-size: 0.88rem;
   font-weight: 600;
+  color: var(--primary);
   text-decoration: none;
-  transition: all 0.15s ease;
 }
 
-.btn-primary {
-  background-color: var(--primary);
-  color: #ffffff;
-  border: 1px solid var(--primary);
-}
+.source-link a:hover { text-decoration: underline; }
 
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-}
-
-.btn-secondary {
-  background-color: #f8fafc;
-  color: var(--text-main);
-  border: 1px solid var(--border-subtle);
-}
-
-.btn-secondary:hover {
-  background-color: #e2e8f0;
-}
-
-.url-text {
-  font-size: 0.74rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.methodology-note {
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.25rem 1.5rem;
-}
-
-.methodology-note h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 0.75rem;
-}
-
-.methodology-note ul {
-  padding-left: 1.25rem;
-  font-size: 0.92rem;
-  color: var(--text-body);
-}
-
-.methodology-note li {
-  margin-bottom: 0.5rem;
-}
-
-.methodology-note li:last-child {
-  margin-bottom: 0;
-}
-
-/* --------------------------------------------------------------------------
-   Table for Feature Domains
-   -------------------------------------------------------------------------- */
-.table-responsive {
-  overflow-x: auto;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-}
-
-.academic-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+/* References */
+.refs {
+  list-style: none;
+  padding: 0;
   font-size: 0.88rem;
 }
 
-.academic-table th {
-  background-color: #f8fafc;
-  color: var(--text-main);
-  font-weight: 600;
-  padding: 0.85rem 1.15rem;
-  border-bottom: 2px solid var(--border-subtle);
-}
-
-.academic-table td {
-  padding: 0.9rem 1.15rem;
-  border-bottom: 1px solid var(--border-light);
-  vertical-align: top;
-  color: var(--text-body);
+.refs li {
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+  margin-bottom: 0.6rem;
   line-height: 1.55;
 }
 
-.academic-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.academic-table tbody tr:hover {
-  background-color: #fbfcfe;
-}
-
-.domain-pill {
-  display: inline-block;
-  background-color: #f1f5f9;
-  color: var(--text-main);
-  font-weight: 600;
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
-  font-size: 0.82rem;
-  border: 1px solid var(--border-subtle);
-  white-space: nowrap;
-}
-
-/* --------------------------------------------------------------------------
-   CRISP-DM Timeline / Steps
-   -------------------------------------------------------------------------- */
-.crisp-steps {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.step-card {
-  display: flex;
-  gap: 1.25rem;
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.15rem 1.4rem;
-}
-
-.step-number {
-  flex-shrink: 0;
-  background-color: var(--primary-light);
-  color: var(--primary);
-  font-size: 0.76rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 0.35rem 0.7rem;
-  border-radius: 4px;
-  height: fit-content;
-  border: 1px solid #bfdbfe;
-}
-
-.step-content h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 0.35rem;
-}
-
-.step-content p {
-  font-size: 0.92rem;
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-.tech-stack-card {
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.25rem 1.5rem;
-}
-
-.tech-stack-card h4 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
-}
-
-.stack-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tech-tag {
-  background-color: #ffffff;
-  color: var(--text-main);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  border: 1px solid var(--border-light);
-}
-
-/* --------------------------------------------------------------------------
-   Two Column Grid (Contributions / Limitations)
-   -------------------------------------------------------------------------- */
-.grid-two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-.box-white {
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 1.4rem;
-}
-
-.box-heading-blue {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 0.75rem;
-}
-
-.box-heading-amber {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #b45309;
-  margin-bottom: 0.75rem;
-}
-
-.styled-list {
-  padding-left: 1.2rem;
-  font-size: 0.92rem;
-}
-
-.styled-list li {
-  margin-bottom: 0.6rem;
-  color: var(--text-body);
-}
-
-.styled-list li:last-child {
-  margin-bottom: 0;
-}
-
-/* --------------------------------------------------------------------------
-   References List (APA Format)
-   -------------------------------------------------------------------------- */
-.references-list {
-  list-style: none;
-  font-size: 0.88rem;
-  color: var(--text-body);
-}
-
-.references-list li {
-  padding-left: 2rem;
-  text-indent: -2rem;
-  margin-bottom: 0.9rem;
-  line-height: 1.6;
-}
-
-.references-list a {
+.refs a {
   color: var(--accent);
   text-decoration: none;
-  word-break: break-all;
 }
 
-.references-list a:hover {
-  text-decoration: underline;
+.refs a:hover { text-decoration: underline; }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
 }
 
-/* Code Snippets */
-.inline-code, .code-sm {
-  font-family: var(--font-mono);
-  font-size: 0.84em;
-  background-color: #f1f5f9;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  border: 1px solid #e2e8f0;
-  color: #0f172a;
-}
-
-/* --------------------------------------------------------------------------
-   Site Footer
-   -------------------------------------------------------------------------- */
-.site-footer {
-  border-top: 1px solid var(--border-light);
-  background-color: #ffffff;
-  padding: 2rem 1.5rem;
-}
-
-.footer-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-meta p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.footer-meta strong {
-  color: var(--text-main);
-}
-
-.footer-badge span {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  background-color: #f8fafc;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  border: 1px solid var(--border-light);
-}
-
-/* --------------------------------------------------------------------------
-   Responsive Breakpoints
-   -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.6rem;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    font-size: 0.82rem;
-  }
-
-  .paper-title {
-    font-size: 1.6rem;
-  }
-
-  .stat-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .source-links-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .grid-two {
-    grid-template-columns: 1fr;
-  }
-
-  .step-card {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Print Optimizations
-   -------------------------------------------------------------------------- */
-@media print {
-  body {
-    background-color: #ffffff;
-    color: #000000;
-  }
-  .site-header, .btn-primary, .btn-secondary {
-    display: none !important;
-  }
-  .paper-header, .content-section, .highlight-banner {
-    box-shadow: none !important;
-    border: 1px solid #ccc !important;
-    page-break-inside: avoid;
-  }
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.5rem; }
+  .stats { flex-direction: column; }
 }
