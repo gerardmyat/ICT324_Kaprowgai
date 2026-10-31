@@ -13,133 +13,82 @@
 
   <main>
 
-    <!-- Title -->
-    <header class="hero">
-      <span class="tag">ICT324 &bull; Data Warehousing &amp; Data Mining</span>
-      <h1>Will It Get a Season 2?</h1>
-      <p class="subtitle">Predicting Television Anime Sequel Production Using Classification &amp; Association Rule Mining</p>
-      <div class="authors">
-        <span>Myat Htoo Kaung — 6708426</span>
-        <span>Aung Kabar — 6708217</span>
-        <span>Aphisith Vongxay — 6708522</span>
-      </div>
-      <p class="institution">Rangsit University International College &bull; Academic Year 2026</p>
-    </header>
+    <span class="tag">ICT324 &bull; Data Warehousing &amp; Data Mining</span>
+    <h1>Will It Get a Season 2?</h1>
+    <p class="subtitle">Predicting Television Anime Sequel Production Using Classification &amp; Association Rule Mining</p>
 
-    <!-- Research Question -->
-    <section class="highlight">
-      <h2>Research Question</h2>
-      <blockquote>
-        "To what extent can supervised machine learning and association rule mining accurately predict whether a first-season television anime receives a verified sequel within three years, based on public audience engagement metrics and production metadata?"
-      </blockquote>
-    </section>
+    <div class="authors">
+      <span>Myat Htoo Kaung — 6708426</span>
+      <span>Aung Kabar — 6708217</span>
+      <span>Aphisith Vongxay — 6708522</span>
+    </div>
+    <p class="institution">Rangsit University International College &bull; Academic Year 2026</p>
 
-    <!-- Problem -->
-    <section class="card">
-      <h2>The Problem</h2>
-      <p>
-        Most television anime end after one season — even popular ones. Sequel decisions are made by private production committees (<em>seisaku iinkai</em>) using internal financial data that outsiders cannot access. Streaming platforms, licensors, and analysts currently have <strong>no data-driven way</strong> to estimate whether a show will continue.
-      </p>
-      <p>
-        Existing research on anime data focuses on predicting ratings, genre trends, and recommendations — but <strong>nobody has tackled sequel prediction</strong> as a classification problem. Critical acclaim and commercial continuation often diverge: a beloved original may end in one season while a mid-rated adaptation gets three sequels.
-      </p>
-    </section>
+    <hr />
 
-    <!-- Approach -->
-    <section class="card">
-      <h2>Our Approach</h2>
-      <p>
-        We frame sequel production as a <strong>binary classification task</strong>: did the anime receive a sequel within 3 years? (<code>has_sequel = 1</code> or <code>0</code>). Our study combines:
-      </p>
-      <ul>
-        <li><strong>Classification:</strong> Logistic Regression, Decision Tree, Random Forest, and XGBoost to predict sequel likelihood.</li>
-        <li><strong>Association Rule Mining:</strong> Apriori and FP-Growth to discover interpretable multi-attribute patterns linked to sequel production.</li>
-        <li><strong>Explainability:</strong> SHAP values for feature importance and model transparency.</li>
-      </ul>
-      <p>
-        We follow the <strong>CRISP-DM</strong> six-phase methodology, with stratified 5-fold cross-validation and SMOTE for class imbalance.
-      </p>
-    </section>
+    <h2>Research Question</h2>
+    <blockquote>
+      "To what extent can supervised machine learning and association rule mining accurately predict whether a first-season television anime receives a verified sequel within three years, based on public audience engagement metrics and production metadata?"
+    </blockquote>
 
-    <!-- Key Variables -->
-    <section class="card">
-      <h2>Key Variables</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Domain</th>
-            <th>Variables</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Audience Engagement</td>
-            <td>Member count, Favorites, Completed/Dropped ratio</td>
-          </tr>
-          <tr>
-            <td>Ratings</td>
-            <td>Mean score (1–10), Scored-by volume</td>
-          </tr>
-          <tr>
-            <td>Production</td>
-            <td>Studio, Producer count, Licensor presence</td>
-          </tr>
-          <tr>
-            <td>Content</td>
-            <td>Source material, Genres, Episodes, Age rating</td>
-          </tr>
-          <tr>
-            <td>Broadcast</td>
-            <td>Premiere season &amp; year (2010–2022)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <h2>The Problem</h2>
+    <p>
+      Most television anime end after one season — even popular ones. Sequel decisions are made by private production committees (<em>seisaku iinkai</em>) using internal financial data that outsiders cannot access. Streaming platforms, licensors, and analysts currently have <strong>no data-driven way</strong> to estimate whether a show will continue.
+    </p>
+    <p>
+      Existing research on anime data focuses on predicting ratings, genre trends, and recommendations — but <strong>nobody has tackled sequel prediction</strong> as a classification problem. Critical acclaim and commercial continuation often diverge: a beloved original may end in one season while a mid-rated adaptation gets three sequels.
+    </p>
 
-    <!-- Data Source -->
-    <section class="card">
-      <h2>Data Source</h2>
-      <div class="stats">
-        <div class="stat">
-          <strong>24,000+</strong>
-          <span>Raw records</span>
-        </div>
-        <div class="stat green">
-          <strong>~2,000–3,000</strong>
-          <span>TV first-season cohort (≥ 500 ✓)</span>
-        </div>
-        <div class="stat">
-          <strong>2010–2022</strong>
-          <span>Premiere window</span>
-        </div>
-      </div>
-      <div class="source-link">
-        <div>
-          <h3>Anime Dataset 2023 — MyAnimeList (Kaggle)</h3>
-          <p>Metadata, genres, user engagement stats, and demographic info for 24,000+ anime entries.</p>
-          <a href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank" rel="noopener noreferrer">View Dataset on Kaggle ↗</a>
-        </div>
-      </div>
-      <div class="source-link">
-        <div>
-          <h3>Jikan REST API v4</h3>
-          <p>Open-source MyAnimeList API used to harvest sequel/prequel relational links for target variable construction.</p>
-          <a href="https://docs.api.jikan.moe/" target="_blank" rel="noopener noreferrer">API Documentation ↗</a>
-        </div>
-      </div>
-    </section>
+    <h2>Our Approach</h2>
+    <p>
+      We frame sequel production as a <strong>binary classification task</strong>: did the anime receive a sequel within 3 years? (<code>has_sequel = 1</code> or <code>0</code>). Our study combines:
+    </p>
+    <ul>
+      <li><strong>Classification:</strong> Logistic Regression, Decision Tree, Random Forest, and XGBoost.</li>
+      <li><strong>Association Rule Mining:</strong> Apriori and FP-Growth to discover interpretable patterns linked to sequel production.</li>
+      <li><strong>Explainability:</strong> SHAP values for feature importance and model transparency.</li>
+    </ul>
+    <p>
+      We follow the <strong>CRISP-DM</strong> six-phase methodology, with stratified 5-fold cross-validation and SMOTE for class imbalance.
+    </p>
 
-    <!-- References -->
-    <section class="card">
-      <h2>References</h2>
-      <ul class="refs">
-        <li>Armenta-Segura, J., & Sidorov, G. (2025). Anime popularity prediction before huge investments. <em>PeerJ Computer Science</em>, 11, e2715.</li>
-        <li>dbdmobile. (2023). <em>Anime dataset 2023</em> [Data set]. Kaggle. <a href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank">Link</a></li>
-        <li>Pratama, S. F., & Priyanto, E. (2024). Analyzing genre patterns using association rule mining. <em>Int. J. Research in Metaverse</em>, 1(3), 172–186.</li>
-        <li>Schröer, C., Kruse, F., & Gómez, J. M. (2021). A systematic literature review on applying CRISP-DM. <em>Procedia Computer Science</em>, 181, 526–534.</li>
-        <li>Setiawan, N., et al. (2023). Time series model to predict future popular anime genres. <em>E3S Web of Conferences</em>, 388, 02002.</li>
-      </ul>
-    </section>
+    <h2>Key Variables</h2>
+    <table>
+      <thead>
+        <tr><th>Domain</th><th>Variables</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Audience Engagement</td><td>Member count, Favorites, Completed/Dropped ratio</td></tr>
+        <tr><td>Ratings</td><td>Mean score (1–10), Scored-by volume</td></tr>
+        <tr><td>Production</td><td>Studio, Producer count, Licensor presence</td></tr>
+        <tr><td>Content</td><td>Source material, Genres, Episodes, Age rating</td></tr>
+        <tr><td>Broadcast</td><td>Premiere season &amp; year (2010–2022)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Data Source</h2>
+    <p>
+      Our primary dataset contains <strong>24,000+</strong> anime records, filtered down to a cohort of approximately <strong>2,000–3,000 first-season TV anime</strong> premiering between 2010 and 2022 — well above the course requirement of ≥ 500 real rows.
+    </p>
+    <p>
+      <strong>Anime Dataset 2023 (Kaggle)</strong><br />
+      Metadata, genres, and user engagement stats from MyAnimeList.<br />
+      <a href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank">kaggle.com/datasets/dbdmobile/myanimelist-dataset ↗</a>
+    </p>
+    <p>
+      <strong>Jikan REST API v4</strong><br />
+      Open-source API for harvesting sequel/prequel relational links.<br />
+      <a href="https://docs.api.jikan.moe/" target="_blank">docs.api.jikan.moe ↗</a>
+    </p>
+
+    <h2>References</h2>
+    <ul class="refs">
+      <li>Armenta-Segura, J., &amp; Sidorov, G. (2025). Anime popularity prediction before huge investments. <em>PeerJ Computer Science</em>, 11, e2715.</li>
+      <li>dbdmobile. (2023). <em>Anime dataset 2023</em> [Data set]. Kaggle. <a href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank">Link</a></li>
+      <li>Pratama, S. F., &amp; Priyanto, E. (2024). Analyzing genre patterns using association rule mining. <em>Int. J. Research in Metaverse</em>, 1(3), 172–186.</li>
+      <li>Schröer, C., Kruse, F., &amp; Gómez, J. M. (2021). A systematic literature review on applying CRISP-DM. <em>Procedia Computer Science</em>, 181, 526–534.</li>
+      <li>Setiawan, N., et al. (2023). Time series model to predict future popular anime genres. <em>E3S Web of Conferences</em>, 388, 02002.</li>
+    </ul>
 
   </main>
 
