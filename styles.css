@@ -1,235 +1,1138 @@
+/* ==========================================================================
+   JAPANESE FLAT COLOR RESEARCH PORTAL - THEME STYLES
+   Theme: Traditional Japanese Minimalist Editorial & Flat Modern Design
+   Palette: Shinku (Torii Red), Aizome (Indigo), Washi (Rice Paper), Sumi (Ink)
+   ========================================================================== */
+
 :root {
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --body: #334155;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --primary: #1e3a8a;
-  --primary-light: #eff6ff;
-  --accent: #0284c7;
-  --accent-light: #f0f9ff;
-  --green: #15803d;
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Traditional Japanese Flat Color Palette (日本の伝統色) */
+  --c-torii: #c92a2a;          /* Shinku / Torii Vermilion Red (深紅) */
+  --c-torii-hover: #b02121;
+  --c-torii-soft: #fdf2f2;      /* Pale Sakura wash */
+  --c-torii-border: #f8c8c8;
+
+  --c-aizome: #1b3552;         /* Japanese Indigo Blue (藍染) */
+  --c-aizome-hover: #14283f;
+  --c-aizome-soft: #edf3f9;
+  --c-aizome-border: #cbdced;
+
+  --c-matcha: #236946;         /* Matcha / Tokiwa Green (常盤色) */
+  --c-matcha-soft: #ecf6f0;
+  --c-matcha-border: #c4e5d1;
+
+  --c-yamabuki: #b86e0c;       /* Yamabuki Gold / Amber (山吹色) */
+  --c-yamabuki-soft: #fcf6eb;
+  --c-yamabuki-border: #f5deb3;
+
+  /* Neutrals: Washi Paper & Sumi Ink */
+  --c-washi: #f8f6f0;          /* Washi Paper / Kinari (生成り) background */
+  --c-washi-surface: #ffffff;  /* Pure clean white card surface */
+  --c-washi-subtle: #f1ede3;   /* Light table headers, pill buttons */
+  
+  --c-sumi: #1c2128;           /* Sumi Charcoal Ink (墨色) text */
+  --c-sumi-light: #495462;     /* Body secondary */
+  --c-sumi-muted: #737f8d;     /* Muted labels */
+
+  --c-border: #e3ded4;         /* Crisp flat line */
+  --c-border-strong: #c8c2b5;  /* Strong structural line */
+
+  /* Fonts */
+  --font-serif-jp: 'Noto Serif JP', 'Shippori Mincho', 'Yu Mincho', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-jp: 'Noto Sans JP', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* Flat geometry */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 9999px;
+  --flat-shadow: 0 1px 3px rgba(30, 20, 10, 0.05), 0 1px 2px rgba(30, 20, 10, 0.03);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+/* ── Reset & Global ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--c-washi);
+}
 
 body {
-  background: var(--bg);
-  color: var(--body);
-  font-family: var(--font);
-  line-height: 1.75;
+  background-color: var(--c-washi);
+  color: var(--c-sumi-light);
+  font-family: var(--font-sans);
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  /* Very subtle, flat traditional grid paper texture */
+  background-image: 
+    linear-gradient(rgba(30, 33, 40, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 33, 40, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* ── Layout ── */
-main {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 3rem 2rem 4rem;
+/* ── Sakura Floating Canvas (Flat Woodblock Blossom Style) ── */
+#sakura-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
-section {
-  margin-bottom: 3rem;
-}
-
-/* ── Header ── */
-.hero {
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--primary);
-  background: var(--primary-light);
-  border: 1px solid #bfdbfe;
-  padding: 0.25rem 0.7rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-h1 {
-  font-size: 2.15rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.025em;
-  line-height: 1.25;
-  margin-bottom: 0.6rem;
-}
-
-.subtitle {
-  font-size: 1.05rem;
-  color: var(--muted);
-  font-weight: 400;
-  line-height: 1.5;
-  max-width: 600px;
-  margin: 0 auto 1.75rem;
-}
-
-.meta {
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-}
-
-.authors {
-  display: flex;
-  justify-content: center;
+/* ── Hanko Japanese Seal Stamp (判子 / 印) ── */
+.hanko-seal {
+  display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--c-torii);
+  color: var(--c-torii);
+  font-family: var(--font-serif-jp);
+  font-weight: 900;
+  font-size: 0.76rem;
+  border-radius: var(--radius-xs);
+  transform: rotate(-3deg);
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(201, 42, 42, 0.1);
+  user-select: none;
+  line-height: 1;
 }
 
-.author {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--text);
+.hanko-seal.green {
+  border-color: var(--c-matcha);
+  color: var(--c-matcha);
 }
 
-.author em {
-  font-style: normal;
-  font-weight: 400;
-  color: var(--muted);
-  margin-left: 0.25rem;
+.hanko-seal.amber {
+  border-color: var(--c-yamabuki);
+  color: var(--c-yamabuki);
 }
 
-.dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--border);
-  display: inline-block;
+/* ── Top Navigation Bar ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248, 246, 240, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--c-border);
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.institution {
-  font-size: 0.82rem;
-  color: var(--muted);
-}
-
-/* ── Divider ── */
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 2.5rem 0;
-}
-
-/* ── Typography ── */
-h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.01em;
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--primary-light);
-}
-
-h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 1.5rem 0 0.4rem;
-}
-
-p {
-  margin-bottom: 0.85rem;
-}
-
-ul, ol {
-  padding-left: 1.3rem;
-  margin-bottom: 0.85rem;
-}
-
-li {
-  margin-bottom: 0.4rem;
-}
-
-strong {
-  color: var(--text);
-}
-
-a {
-  color: var(--accent);
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+.brand-badge {
+  background: var(--c-torii);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+}
+
+.brand-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--c-sumi);
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text small {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--c-aizome);
+  font-family: var(--font-jp);
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--c-sumi-light);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.15s ease;
+  position: relative;
+  padding: 0.35rem 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--c-torii);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: var(--c-torii);
+  border-radius: 2px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sakura-toggle-btn {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  color: var(--c-sumi);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.sakura-toggle-btn:hover {
+  background: var(--c-torii-soft);
+  border-color: var(--c-torii-border);
+  color: var(--c-torii);
+}
+
+.sakura-toggle-btn.paused {
+  background: var(--c-washi-subtle);
+  color: var(--c-sumi-muted);
+}
+
+/* ── Main Container ── */
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3rem 1.75rem 5rem;
+  position: relative;
+  z-index: 10;
+}
+
+section {
+  margin-bottom: 4.5rem;
+  position: relative;
+  scroll-margin-top: 85px;
+}
+
+header {
+  scroll-margin-top: 85px;
+}
+
+/* Custom Flat Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--c-washi);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-border-strong);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-torii);
+}
+
+/* ── Section Chapter Badges (第X章) ── */
+.episode-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-torii);
+  margin-bottom: 0.4rem;
+}
+
+.episode-tag .kanji {
+  font-family: var(--font-serif-jp);
+  background: var(--c-torii-soft);
+  color: var(--c-torii);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--c-torii-border);
+  font-weight: 700;
+}
+
+h2 {
+  font-family: var(--font-serif-jp);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--c-sumi);
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--c-border);
+}
+
+h3 {
+  font-family: var(--font-serif-jp);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--c-sumi);
+  margin: 1.75rem 0 0.65rem;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--c-sumi-light);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+strong {
+  color: var(--c-sumi);
+  font-weight: 700;
 }
 
 code {
-  font-family: 'SFMono-Regular', Consolas, monospace;
-  font-size: 0.84em;
-  background: #f1f5f9;
-  padding: 0.15rem 0.4rem;
-  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--c-washi-subtle);
+  color: var(--c-aizome);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--c-border);
 }
 
-/* ── Blockquote ── */
-blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 1rem 1.5rem;
-  margin: 0 0 1rem;
-  background: var(--accent-light);
-  border-radius: 0 6px 6px 0;
-  font-style: italic;
-  font-size: 1.08rem;
-  color: var(--text);
-  line-height: 1.65;
+/* ── Hero Section ── */
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem 3.5rem;
+  position: relative;
+  border-bottom: 2px solid var(--c-border);
+  margin-bottom: 3.5rem;
 }
 
-/* ── Two Column Layout ── */
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 1.25rem 0;
-}
-
-.two-col h3 {
-  font-size: 0.95rem;
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border-strong);
+  color: var(--c-sumi-light);
+  font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--primary);
-  margin: 0 0 0.35rem;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.5rem;
 }
 
-.two-col p {
-  font-size: 0.93rem;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-torii);
+}
+
+.hero h1 {
+  font-family: var(--font-serif-jp);
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--c-sumi);
+  margin-bottom: 0.6rem;
+}
+
+.hero h1 .gradient-text {
+  color: var(--c-torii);
+}
+
+.hero .jp-title {
+  display: block;
+  font-family: var(--font-serif-jp);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--c-aizome);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+  font-size: 1.12rem;
+  color: var(--c-sumi-light);
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto 2rem;
+}
+
+/* Hero Flat Action Buttons */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary-neon {
+  background: var(--c-torii);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.15s ease;
+  border: 2px solid var(--c-torii);
+}
+
+.btn-primary-neon:hover {
+  background: var(--c-torii-hover);
+  border-color: var(--c-torii-hover);
+  color: #fff;
+}
+
+.btn-secondary-cyber {
+  background: var(--c-washi-surface);
+  color: var(--c-aizome);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  border: 2px solid var(--c-border-strong);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary-cyber:hover {
+  background: var(--c-washi-subtle);
+  border-color: var(--c-aizome);
+  color: var(--c-aizome-hover);
+}
+
+/* Hero Author Meta (Japanese Roster Box) */
+.hero-meta {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 1.4rem 1.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+  box-shadow: var(--flat-shadow);
+}
+
+.authors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.author-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--c-torii-soft);
+  border: 2px solid var(--c-torii-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.author-name {
+  font-family: var(--font-serif-jp);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--c-sumi);
+}
+
+.author-id {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--c-torii);
+  font-weight: 600;
+}
+
+.author-role {
+  font-size: 0.72rem;
+  color: var(--c-sumi-muted);
+}
+
+.institution-line {
+  font-size: 0.82rem;
+  color: var(--c-sumi-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-weight: 500;
+}
+
+/* ── Quote Box (Traditional Editorial Manuscript) ── */
+.research-quote-card {
+  position: relative;
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-left: 6px solid var(--c-torii);
+  padding: 1.75rem 2.2rem;
+  border-radius: var(--radius-xs);
+  margin: 1.5rem 0;
+  box-shadow: var(--flat-shadow);
+}
+
+.quote-kanji {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-family: var(--font-serif-jp);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: rgba(201, 42, 42, 0.08);
+  pointer-events: none;
+}
+
+blockquote {
+  font-family: var(--font-serif-jp);
+  font-size: 1.18rem;
+  font-style: normal;
+  color: var(--c-sumi);
+  line-height: 1.8;
+}
+
+/* ── Problem Breakdown Cards ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.problem-card {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-top: 4px solid var(--c-aizome);
+  border-radius: var(--radius-xs);
+  padding: 1.4rem;
+  box-shadow: var(--flat-shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-border-strong);
+}
+
+.problem-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.65rem;
+  display: inline-block;
+}
+
+.problem-card h4 {
+  font-family: var(--font-serif-jp);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-sumi);
+  margin-bottom: 0.45rem;
+}
+
+.problem-card p {
+  font-size: 0.88rem;
+  color: var(--c-sumi-light);
+  line-height: 1.65;
   margin: 0;
 }
 
-/* ── Table ── */
+/* ── The Sequel Paradox: Case Studies ── */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.case-card {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-xs);
+  padding: 1.4rem;
+  position: relative;
+  box-shadow: var(--flat-shadow);
+  transition: transform 0.15s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-border-strong);
+}
+
+.case-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+}
+
+.case-card.greenlit::before { background: var(--c-matcha); }
+.case-card.limbo::before { background: var(--c-torii); }
+.case-card.merch::before { background: var(--c-aizome); }
+.case-card.original-risk::before { background: var(--c-yamabuki); }
+
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+.case-title {
+  font-family: var(--font-serif-jp);
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--c-sumi);
+}
+
+.case-jp {
+  font-family: var(--font-serif-jp);
+  font-size: 0.76rem;
+  color: var(--c-sumi-muted);
+}
+
+.case-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.case-badge.success {
+  background: var(--c-matcha-soft);
+  color: var(--c-matcha);
+  border: 1.5px solid var(--c-matcha-border);
+}
+
+.case-badge.danger {
+  background: var(--c-torii-soft);
+  color: var(--c-torii);
+  border: 1.5px solid var(--c-torii-border);
+}
+
+.case-meta {
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.8rem;
+  color: var(--c-sumi-muted);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--c-border);
+}
+
+.case-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.case-explanation {
+  font-size: 0.88rem;
+  color: var(--c-sumi-light);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Case Study Poster Layout ── */
+.case-body {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.case-poster-wrapper {
+  flex-shrink: 0;
+  width: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.case-poster {
+  width: 96px;
+  height: 138px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+  border: 1.5px solid var(--c-border-strong);
+  background: var(--c-washi-subtle);
+  display: block;
+  box-shadow: var(--flat-shadow);
+  transition: transform 0.2s ease;
+}
+
+.case-card:hover .case-poster {
+  transform: scale(1.03);
+}
+
+.poster-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--c-sumi-muted);
+  text-align: center;
+  background: var(--c-washi-subtle);
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--c-border);
+}
+
+.case-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── CRISP-DM Pipeline Timeline ── */
+.crisp-pipeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.crisp-step {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-xs);
+  padding: 1.4rem;
+  box-shadow: var(--flat-shadow);
+  transition: transform 0.15s ease;
+}
+
+.crisp-step:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-aizome);
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--c-torii);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.crisp-step h4 {
+  font-family: var(--font-serif-jp);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--c-sumi);
+  margin-bottom: 0.45rem;
+}
+
+.crisp-step p {
+  font-size: 0.86rem;
+  color: var(--c-sumi-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Interactive ML Predictor Box ── */
+.predictor-wrapper {
+  background: var(--c-washi-surface);
+  border: 2px solid var(--c-border-strong);
+  border-radius: var(--radius-sm);
+  padding: 2.25rem 2rem 2rem;
+  box-shadow: var(--flat-shadow);
+  position: relative;
+}
+
+.predictor-wrapper::before {
+  content: 'SIMULATION LAB // Sequel Predictor';
+  position: absolute;
+  top: -13px;
+  left: 20px;
+  background: var(--c-aizome);
+  color: #fff;
+  font-family: var(--font-serif-jp);
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.05em;
+}
+
+.presets-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px solid var(--c-border);
+  flex-wrap: wrap;
+}
+
+.preset-label {
+  font-family: var(--font-serif-jp);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c-sumi);
+  letter-spacing: 0.03em;
+}
+
+.preset-btn {
+  background: var(--c-washi);
+  border: 1.5px solid var(--c-border-strong);
+  color: var(--c-sumi);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.preset-btn:hover,
+.preset-btn.active {
+  background: var(--c-torii);
+  border-color: var(--c-torii);
+  color: #fff;
+}
+
+.predictor-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+}
+
+.predictor-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--c-sumi);
+}
+
+.val-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--c-torii);
+  background: var(--c-torii-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--c-torii-border);
+}
+
+/* Custom Flat Sliders & Select Inputs */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--c-border-strong);
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--c-torii);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+select {
+  background: var(--c-washi);
+  border: 1.5px solid var(--c-border-strong);
+  color: var(--c-sumi);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-xs);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+select:focus {
+  border-color: var(--c-aizome);
+}
+
+/* Predictor Result Panel (Japanese Scorecard) */
+.predictor-result-panel {
+  background: var(--c-washi);
+  border: 1.5px solid var(--c-border-strong);
+  border-radius: var(--radius-xs);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.result-header {
+  font-family: var(--font-serif-jp);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--c-sumi-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.gauge-circle {
+  margin: 0.4rem 0 0.85rem;
+}
+
+.gauge-percent {
+  font-size: 3.4rem;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: var(--c-sumi);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.gauge-sub {
+  font-size: 0.78rem;
+  color: var(--c-sumi-muted);
+  margin-top: 0.25rem;
+}
+
+.gauge-bar-wrapper {
+  width: 100%;
+  height: 10px;
+  background: var(--c-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-bottom: 1.15rem;
+}
+
+.gauge-fill {
+  height: 100%;
+  background: var(--c-torii);
+  width: 50%;
+  transition: width 0.35s ease;
+}
+
+.verdict-badge {
+  font-family: var(--font-serif-jp);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.verdict-badge.greenlit {
+  background: var(--c-matcha-soft);
+  color: var(--c-matcha);
+  border: 1.5px solid var(--c-matcha-border);
+}
+
+.verdict-badge.deliberation {
+  background: var(--c-yamabuki-soft);
+  color: var(--c-yamabuki);
+  border: 1.5px solid var(--c-yamabuki-border);
+}
+
+.verdict-badge.terminated {
+  background: var(--c-torii-soft);
+  color: var(--c-torii);
+  border: 1.5px solid var(--c-torii-border);
+}
+
+.verdict-title {
+  font-family: var(--font-serif-jp);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+  color: var(--c-sumi);
+}
+
+.verdict-desc {
+  font-size: 0.84rem;
+  color: var(--c-sumi-light);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+/* SHAP Breakdown in Result */
+.shap-factors-wrapper {
+  width: 100%;
+  text-align: left;
+  border-top: 1.5px solid var(--c-border);
+  padding-top: 1rem;
+}
+
+.shap-factors-title {
+  font-family: var(--font-serif-jp);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--c-sumi-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+
+.shap-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.shap-factor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-xs);
+  background: var(--c-washi-surface);
+  border: 1px solid var(--c-border);
+}
+
+.shap-factor.positive .factor-badge {
+  color: var(--c-matcha);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.shap-factor.negative .factor-badge {
+  color: var(--c-torii);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* ── Variables Matrix Table (Japanese Ledger Style) ── */
+.table-container {
+  overflow-x: auto;
+  border: 1.5px solid var(--c-border-strong);
+  border-radius: var(--radius-xs);
+  background: var(--c-washi-surface);
+  margin: 1.5rem 0;
+  box-shadow: var(--flat-shadow);
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
-  margin-top: 0.25rem;
+  text-align: left;
 }
 
 thead th {
-  text-align: left;
-  font-weight: 600;
+  background: var(--c-washi-subtle);
+  color: var(--c-sumi);
+  font-family: var(--font-serif-jp);
+  font-weight: 700;
   font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  padding: 0.65rem 0.85rem;
-  border-bottom: 2px solid var(--border);
+  letter-spacing: 0.05em;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 2px solid var(--c-border-strong);
 }
 
-td {
-  padding: 0.7rem 0.85rem;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  line-height: 1.55;
+tbody td {
+  padding: 0.95rem 1.1rem;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-sumi-light);
+  vertical-align: middle;
 }
 
 tbody tr:last-child td {
@@ -237,98 +1140,321 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-  background: #fbfcfe;
+  background: var(--c-washi);
 }
 
-/* ── Data Stats ── */
-.data-stats {
-  display: flex;
-  gap: 2.5rem;
-  margin: 0.5rem 0 2rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.data-stats > div {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-number {
-  font-size: 1.5rem;
+.domain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-serif-jp);
   font-weight: 700;
-  color: var(--primary);
+  color: var(--c-sumi);
+}
+
+/* ── Benchmark Model Comparison Grid ── */
+.model-benchmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.15rem;
+  margin: 1.5rem 0;
+}
+
+.model-card {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-top: 4px solid var(--c-sumi-muted);
+  border-radius: var(--radius-xs);
+  padding: 1.35rem 1.15rem;
+  position: relative;
+  box-shadow: var(--flat-shadow);
+  transition: transform 0.15s ease;
+}
+
+.model-card.champion {
+  border-color: var(--c-torii);
+  border-top: 4px solid var(--c-torii);
+}
+
+.model-card.champion::after {
+  content: '★ BEST PERFORMER';
+  position: absolute;
+  top: -11px;
+  right: 10px;
+  background: var(--c-torii);
+  color: #fff;
+  font-family: var(--font-serif-jp);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-xs);
+}
+
+.model-card h4 {
+  font-family: var(--font-serif-jp);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-sumi);
+  margin-bottom: 0.25rem;
+}
+
+.model-card .model-type {
+  font-size: 0.74rem;
+  color: var(--c-sumi-muted);
+  margin-bottom: 0.85rem;
+}
+
+.model-metric {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px dashed var(--c-border);
+  padding-bottom: 0.3rem;
+}
+
+.model-metric .val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--c-sumi);
+}
+
+.model-card.champion .model-metric .val {
+  color: var(--c-torii);
+}
+
+/* ── Association Rules Section ── */
+.rules-filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.rule-filter-btn {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border-strong);
+  color: var(--c-sumi-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rule-filter-btn:hover,
+.rule-filter-btn.active {
+  background: var(--c-aizome);
+  border-color: var(--c-aizome);
+  color: #fff;
+}
+
+/* ── Data Source Cards ── */
+.data-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.stat-box {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-top: 3px solid var(--c-aizome);
+  border-radius: var(--radius-xs);
+  padding: 1.35rem 1rem;
+  text-align: center;
+  box-shadow: var(--flat-shadow);
+}
+
+.stat-box .number {
+  font-size: 1.95rem;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: var(--c-aizome);
   line-height: 1.2;
 }
 
-.stat-number.highlight {
-  color: var(--green);
+.stat-box.highlight {
+  border-top-color: var(--c-torii);
 }
 
-.stat-desc {
+.stat-box.highlight .number {
+  color: var(--c-torii);
+}
+
+.stat-box .label {
   font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.15rem;
+  color: var(--c-sumi-muted);
+  margin-top: 0.35rem;
 }
 
-/* ── Link Buttons ── */
-.link-btn {
-  display: inline-block;
+.data-source-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.ds-card {
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-xs);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--flat-shadow);
+}
+
+.ds-card h4 {
+  font-family: var(--font-serif-jp);
+  font-size: 1.1rem;
+  color: var(--c-sumi);
+  margin-bottom: 0.5rem;
+}
+
+.ds-card p {
   font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--primary);
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  margin: 0.5rem 0 1.75rem;
-  transition: background 0.15s ease;
+  color: var(--c-sumi-light);
+  line-height: 1.65;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--c-torii);
+  text-decoration: none;
+  margin-top: 0.85rem;
+  transition: color 0.15s ease;
 }
 
 .link-btn:hover {
-  background: #172554;
-  text-decoration: none;
+  color: var(--c-torii-hover);
+  text-decoration: underline;
 }
 
-.link-btn.secondary {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-.link-btn.secondary:hover {
-  background: #f1f5f9;
-}
-
-/* ── References ── */
+/* ── References List (Academic Colophon) ── */
 .refs {
+  list-style-type: decimal;
   padding-left: 1.5rem;
-  font-size: 0.88rem;
-  line-height: 1.6;
 }
 
 .refs li {
-  margin-bottom: 0.65rem;
+  font-size: 0.9rem;
+  color: var(--c-sumi-light);
+  margin-bottom: 0.75rem;
+  line-height: 1.65;
 }
 
 .refs a {
-  word-break: break-all;
+  color: var(--c-torii);
+  text-decoration: none;
 }
 
-/* ── Footer ── */
+.refs a:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer (Traditional Japanese Okuzuke / 奥付) ── */
 footer {
+  border-top: 3px solid var(--c-border-strong);
+  background: var(--c-washi-subtle);
+  padding: 3.5rem 1.5rem 3rem;
   text-align: center;
-  padding: 2rem 1.5rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 10;
 }
 
-/* ── Responsive ── */
-@media (max-width: 640px) {
-  main { padding: 2rem 1.25rem 3rem; }
-  h1 { font-size: 1.65rem; }
-  .two-col { grid-template-columns: 1fr; gap: 1rem; }
-  .data-stats { flex-direction: column; gap: 1rem; }
-  .authors { flex-direction: column; gap: 0.25rem; }
-  .dot { display: none; }
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-family: var(--font-serif-jp);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--c-sumi);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-sub {
+  font-size: 0.86rem;
+  color: var(--c-sumi-muted);
+  margin-bottom: 1.75rem;
+}
+
+.footer-team {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.footer-team-member {
+  font-size: 0.84rem;
+  color: var(--c-sumi);
+  background: var(--c-washi-surface);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-xs);
+  border: 1.5px solid var(--c-border);
+}
+
+.footer-team-member strong {
+  color: var(--c-torii);
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--c-sumi-muted);
+}
+
+/* ── Fair Use Academic Notice ── */
+.footer-disclaimer {
+  max-width: 740px;
+  margin: 1.75rem auto 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1.65;
+  color: var(--c-sumi-muted);
+  background: var(--c-washi-surface);
+  border: 1.5px solid var(--c-border);
+  border-left: 4px solid var(--c-torii);
+  border-radius: var(--radius-xs);
+  text-align: left;
+}
+
+.footer-disclaimer strong {
+  color: var(--c-sumi);
+}
+
+/* ── Responsive Mobile Styles ── */
+@media (max-width: 768px) {
+  .navbar { padding: 0.75rem 1rem; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2.1rem; }
+  .hero .subtitle { font-size: 1rem; }
+  .authors-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .case-studies-grid { grid-template-columns: 1fr; }
+  .case-body { flex-direction: column; align-items: flex-start; }
+  .case-poster-wrapper { width: 84px; }
+  .case-poster { width: 84px; height: 120px; }
+  .crisp-pipeline { grid-template-columns: 1fr; }
+  .predictor-grid { grid-template-columns: 1fr; }
+  .model-benchmarks-grid { grid-template-columns: 1fr 1fr; }
+  .data-stats-grid { grid-template-columns: 1fr 1fr; }
+  .data-source-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .model-benchmarks-grid { grid-template-columns: 1fr; }
+  .data-stats-grid { grid-template-columns: 1fr; }
 }

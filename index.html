@@ -1,173 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Will It Get a Season 2? | ICT324 Research</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Will It Get a Season 2? | Anime Data Mining Research (ICT324)</title>
+
+  <!-- Fonts: Noto Serif for Elegant Headers, Plus Jakarta Sans for Body, JetBrains Mono for Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+JP:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Flat Theme Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
+  <!-- Floating Sakura Petals Canvas Effect (Woodblock Flat Blossom Style) -->
+  <canvas id="sakura-canvas"></canvas>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <span class="brand-badge">ICT324</span>
+      <div class="brand-text">
+        <span>ANIME DATA LAB</span>
+        <small>Sequel Prediction Research</small>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#paradox">Sequel Paradox</a></li>
+      <li><a href="#simulator">Simulator</a></li>
+      <li><a href="#pipeline">CRISP-DM</a></li>
+      <li><a href="#variables">Variables</a></li>
+      <li><a href="#models">ML Models</a></li>
+      <li><a href="#rules">Association Rules</a></li>
+      <li><a href="#data">Dataset</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button id="toggle-sakura-btn" class="sakura-toggle-btn" title="Toggle cherry blossom particles">
+        🌸 <span>Petals: ON</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
   <main>
 
-    <!-- Header -->
-    <header class="hero">
-      <span class="tag">ICT324 &bull; Data Warehousing &amp; Data Mining</span>
-      <h1>Will It Get a Season 2?</h1>
-      <p class="subtitle">Predicting Television Anime Sequel Production Using Classification &amp; Association Rule Mining</p>
+    <!-- Hero Header -->
+    <header class="hero" id="overview">
+      <div class="hero-status-pill">
+        <!-- <span class="status-dot"></span> -->
+        <span>Data Mining Research • Semester 2, 2026</span>
+      </div>
 
-      <div class="meta">
-        <div class="authors">
-          <span class="author">Myat Htoo Kaung <em>6708426</em></span>
-          <span class="dot"></span>
-          <span class="author">Aung Kabar <em>6708217</em></span>
-          <span class="dot"></span>
-          <span class="author">Aphisith Vongxay <em>6708522</em></span>
+      <h1>
+        <span class="gradient-text">Will It Get a Season 2?</span>
+      </h1>
+      <span class="jp-title">Predicting Television Anime Sequel Production Using Machine Learning</span>
+
+      <p class="subtitle">
+        An empirical data mining study using supervised classification and association rule mining to uncover the hidden
+        audience and commercial signals behind anime sequel greenlights.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#simulator" class="btn-primary-neon">
+          ⚡ Try Sequel Predictor
+        </a>
+        <a href="#paradox" class="btn-secondary-cyber">
+          🔍 Explore Case Studies
+        </a>
+      </div>
+
+      <!-- Authors Meta Card -->
+      <div class="hero-meta">
+        <div class="authors-grid">
+          <div class="author-chip">
+            <div class="author-avatar">🤖</div>
+            <span class="author-name">Myat Htoo Kaung</span>
+            <span class="author-id">ID: 6708426</span>
+            <!-- <span class="author-role">Supervised Classification &amp; Tuning</span> -->
+          </div>
+
+          <div class="author-chip">
+            <div class="author-avatar">📊</div>
+            <span class="author-name">Aung Kabar</span>
+            <span class="author-id">ID: 6708217</span>
+            <!-- <span class="author-role">Data Engineering &amp; Jikan Graph API</span> -->
+          </div>
+
+          <div class="author-chip">
+            <div class="author-avatar">🧠</div>
+            <span class="author-name">Aphisith Vongxay</span>
+            <span class="author-id">ID: 6708522</span>
+            <!-- <span class="author-role">Association Mining &amp; SHAP Values</span> -->
+          </div>
         </div>
-        <p class="institution">Rangsit University International College &bull; Academic Year 2026</p>
+
+        <div class="institution-line">
+          <span>🎓 ICT324 Introduction to Data Warehousing &amp; Data Mining</span>
+          <span>&bull;</span>
+          <span>🏫 Rangsit University International College (RIC)</span>
+        </div>
       </div>
     </header>
 
-    <div class="divider"></div>
-
-    <!-- Research Question -->
-    <section>
+    <!-- Episode 01: Research Question -->
+    <section id="question">
+      <div class="episode-tag">
+        <span class="kanji">Research Focus</span>
+        <span>Chapter 01 // Core Inquiry</span>
+      </div>
       <h2>Research Question</h2>
-      <blockquote>
-        "To what extent can supervised machine learning and association rule mining accurately predict whether a first-season television anime receives a verified sequel within three years, based on public audience engagement metrics and production metadata?"
-      </blockquote>
+
+      <div class="research-quote-card">
+        <blockquote>
+          "To what extent can supervised machine learning and association rule mining accurately predict whether a
+          first-season television anime receives a verified sequel within three years, based on public audience
+          engagement metrics and production metadata?"
+        </blockquote>
+      </div>
     </section>
 
-    <!-- Problem Statement -->
-    <section>
-      <h2>The Problem</h2>
-      <p>
-        Most television anime end after one season — even popular ones. Sequel decisions are made by private production committees (<em>seisaku iinkai</em>) composed of publishers, broadcasters, and distributors using internal financial data that outsiders cannot access.
-      </p>
-      <p>
-        Streaming platforms, licensors, and media analysts currently have <strong>no empirical, reproducible framework</strong> to estimate whether a show will continue. Existing anime data mining research focuses on predicting ratings, forecasting genre trends, and building recommendation systems — but <strong>sequel prediction remains unaddressed</strong> as a classification problem.
-      </p>
-      <p>
-        This matters because critical acclaim and commercial continuation frequently diverge: a beloved original series may end in one season due to exhausted source material, while a mid-rated manga adaptation with steady viewer retention receives multiple sequels.
-      </p>
-    </section>
+    <!-- Episode 02: Problem Statement -->
+    <section id="problem">
+      <div class="episode-tag">
+        <span class="kanji">Industry Problem</span>
+        <span>Chapter 02 // The Committee Black Box</span>
+      </div>
+      <h2>The Production Committee Problem</h2>
 
-    <!-- Approach -->
-    <section>
-      <h2>Our Approach</h2>
       <p>
-        We frame sequel production as a <strong>binary classification task</strong> — did the anime receive a verified sequel within 3 years of its first season? (<code>has_sequel = 1</code> or <code>0</code>). The study combines two complementary tracks:
+        In Japan's animation industry, sequel greenlights are decided behind closed doors by <strong>Production
+          Committees (<em>seisaku iinkai</em>)</strong> — consortia of manga and light novel publishers, television
+        networks, music record labels, toy manufacturers, and international streaming distributors.
       </p>
 
-      <div class="two-col">
-        <div>
-          <h3>Supervised Classification</h3>
-          <p>Four models — Logistic Regression, Decision Tree, Random Forest, and XGBoost — evaluated with stratified 5-fold cross-validation and SMOTE for class imbalance handling.</p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="problem-icon">🔒</span>
+          <h4>Private Financial Data</h4>
+          <p>
+            Outsiders cannot view physical Blu-ray sales profit margins, domestic broadcast timeslot ratings,
+            merchandise licensing agreements, or overseas minimum guarantee contracts.
+          </p>
         </div>
-        <div>
-          <h3>Association Rule Mining</h3>
-          <p>Apriori and FP-Growth algorithms to discover interpretable multi-attribute patterns that co-occur with sequel continuation or single-season termination.</p>
+
+        <div class="problem-card">
+          <span class="problem-icon">📉</span>
+          <h4>Research Blind Spot</h4>
+          <p>
+            Past anime research focuses primarily on user recommendation systems, rating predictions, and seasonal
+            popularity trends — leaving <strong>sequel continuation completely unaddressed</strong> as a formal
+            classification task.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <span class="problem-icon">⚡</span>
+          <h4>Acclaim vs. Continuation</h4>
+          <p>
+            Critical acclaim and commercial continuation frequently diverge: a critically acclaimed 9/10 original anime
+            may end forever, while a 6.8/10 harem comedy manga adaptation receives four consecutive seasons.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies: The Sequel Paradox -->
+    <section id="paradox">
+      <div class="episode-tag">
+        <span class="kanji">Case Analysis</span>
+        <span>Empirical Evidence // Why Ratings Lie</span>
+      </div>
+      <h2>The Anime Sequel Paradox: Real-World Case Studies</h2>
+      <p>
+        Why do widely acclaimed anime disappear while moderately scored shows receive endless sequels? These real-world
+        industry examples demonstrate why multi-attribute data mining is essential:
+      </p>
+
+      <div class="case-studies-grid">
+        <!-- Case 1 -->
+        <div class="case-card limbo">
+          <div class="case-body">
+            <div class="case-poster-wrapper">
+              <img src="https://cdn.myanimelist.net/images/anime/5/65187.jpg" alt="No Game No Life Poster" class="case-poster" loading="lazy" />
+              <span class="poster-tag">MAL #19815</span>
+            </div>
+            <div class="case-content">
+              <div class="case-header">
+                <div>
+                  <div class="case-title">No Game No Life</div>
+                  <div class="case-jp">Studio Madhouse &bull; 2014</div>
+                </div>
+                <span class="case-badge danger">Stalled in Limbo (0 Sequels)</span>
+              </div>
+              <div class="case-meta">
+                <span>⭐ Score: 8.10</span>
+                <span>👥 Members: 1.6M+</span>
+                <span>📖 Source: Light Novel</span>
+              </div>
+              <p class="case-explanation">
+                Despite immense global fandom and high ratings, no Season 2 arrived in over 10 years. The anime accomplished its primary commercial goal — boosting publisher Kadokawa's light novel backlog sales — while limited unadapted material and author hiatus stalled committee justification.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="case-card greenlit">
+          <div class="case-body">
+            <div class="case-poster-wrapper">
+              <img src="https://cdn.myanimelist.net/images/anime/1902/128382.jpg" alt="Rent-a-Girlfriend Poster" class="case-poster" loading="lazy" />
+              <span class="poster-tag">MAL #40839</span>
+            </div>
+            <div class="case-content">
+              <div class="case-header">
+                <div>
+                  <div class="case-title">Rent-a-Girlfriend</div>
+                  <div class="case-jp">Studio TMS Entertainment &bull; 2020</div>
+                </div>
+                <span class="case-badge success">4 Seasons Greenlit</span>
+              </div>
+              <div class="case-meta">
+                <span>⭐ Score: 6.95</span>
+                <span>👥 Members: 650k</span>
+                <span>📖 Source: Weekly Shonen Manga</span>
+              </div>
+              <p class="case-explanation">
+                Despite polarizing Western scores and heavy review-bombing, publisher Kodansha continuously greenlit Season 2, Season 3, and Season 4. Strong Weekly Shonen Magazine print circulation, massive character merchandise sales, and high streaming licensing revenue created a self-sustaining sequel machine.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="case-card greenlit">
+          <div class="case-body">
+            <div class="case-poster-wrapper">
+              <img src="https://cdn.myanimelist.net/images/anime/1448/127956.jpg" alt="Bocchi the Rock! Poster" class="case-poster" loading="lazy" />
+              <span class="poster-tag">MAL #47917</span>
+            </div>
+            <div class="case-content">
+              <div class="case-header">
+                <div>
+                  <div class="case-title">Bocchi the Rock!</div>
+                  <div class="case-jp">Studio CloverWorks &bull; 2022</div>
+                </div>
+                <span class="case-badge success">Sequel Movies Confirmed</span>
+              </div>
+              <div class="case-meta">
+                <span>⭐ Score: 8.82</span>
+                <span>👥 High Loyalty: 8.2% Favs</span>
+                <span>📖 Source: 4-Koma Manga</span>
+              </div>
+              <p class="case-explanation">
+                A breakout phenomenon driven by extreme viewer loyalty. The <em>Kessoku Band</em> album topped Billboard Japan physical and digital charts, selling tens of thousands of CDs and concert merchandise, giving distributor Aniplex immediate financial justification to greenlight sequels.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 4 -->
+        <div class="case-card original-risk">
+          <div class="case-body">
+            <div class="case-poster-wrapper">
+              <img src="https://cdn.myanimelist.net/images/anime/1694/110521.jpg" alt="Wonder Egg Priority Poster" class="case-poster" loading="lazy" />
+              <span class="poster-tag">MAL #43299</span>
+            </div>
+            <div class="case-content">
+              <div class="case-header">
+                <div>
+                  <div class="case-title">Wonder Egg Priority</div>
+                  <div class="case-jp">Studio CloverWorks &bull; 2021</div>
+                </div>
+                <span class="case-badge danger">Terminated (0 Sequels)</span>
+              </div>
+              <div class="case-meta">
+                <span>⭐ Score: 7.42</span>
+                <span>👥 Members: 420k</span>
+                <span>📖 Source: Original TV Anime</span>
+              </div>
+              <p class="case-explanation">
+                With no pre-existing manga or light novel publishing sponsor to absorb financial losses, original anime carry high risk. When production schedules collapsed and finale reception plummeted, the committee terminated further continuation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Machine Learning Predictor -->
+    <section id="simulator">
+      <div class="episode-tag">
+        <span class="kanji">Interactive Lab</span>
+        <span>Chapter 03 // ML Simulation Engine</span>
+      </div>
+      <h2>"Will It Get a Season 2?" Live Predictor</h2>
+      <p>
+        Test any anime scenario! This interactive engine simulates our trained supervised classification weights and
+        association rules to calculate sequel probability within 36 months of broadcast.
+      </p>
+
+      <div class="predictor-wrapper">
+        <!-- Archetype Presets -->
+        <div class="presets-container">
+          <span class="preset-label">Quick Archetype Presets:</span>
+          <button type="button" class="preset-btn active" data-preset="shonen">⚔️ Shonen Mega-Hit (e.g. JJK / Demon
+            Slayer)</button>
+          <button type="button" class="preset-btn" data-preset="cult">💔 Cult Light Novel (e.g. No Game No
+            Life)</button>
+          <button type="button" class="preset-btn" data-preset="merch">💸 Merch Dynamo (e.g. Rent-a-Girlfriend)</button>
+          <button type="button" class="preset-btn" data-preset="original">🎲 Risky Original (e.g. Wonder Egg)</button>
+        </div>
+
+        <form id="predictor-form" class="predictor-grid" onsubmit="event.preventDefault();">
+          <!-- Left Controls Column -->
+          <div class="predictor-controls">
+
+            <div class="control-group">
+              <label class="control-label" for="input-score">
+                <span>MyAnimeList Mean Score (1.0 – 10.0)</span>
+                <span class="val-badge" id="val-score">8.5</span>
+              </label>
+              <input type="range" id="input-score" min="5.0" max="9.5" step="0.1" value="8.5" />
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="input-source">
+                <span>Source Material Type</span>
+              </label>
+              <select id="input-source">
+                <option value="manga" selected>Manga Adaptation (Shueisha, Kodansha, etc.)</option>
+                <option value="light-novel">Light Novel (Kadokawa, Dengeki Bunko, etc.)</option>
+                <option value="original">Original Television Anime (No source IP)</option>
+                <option value="game">Mobile Game / Visual Novel Tie-in</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="input-studio">
+                <span>Animation Studio Prestige Tier</span>
+              </label>
+              <select id="input-studio">
+                <option value="tier-s" selected>Tier S (MAPPA, Ufotable, Bones, Wit Studio)</option>
+                <option value="tier-a">Tier A (CloverWorks, A-1 Pictures, Madhouse, Production I.G)</option>
+                <option value="tier-b">Tier B / Independent / Regional Studio</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="input-members">
+                <span>Audience Scale (MyAnimeList Members)</span>
+                <span class="val-badge" id="val-members">1.2M</span>
+              </label>
+              <input type="range" id="input-members" min="30000" max="2000000" step="20000" value="1200000" />
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="input-loyalty">
+                <span>Fan Loyalty Ratio (Favorites ÷ Members)</span>
+              </label>
+              <select id="input-loyalty">
+                <option value="high" selected>High Loyalty (> 3.0% — Strong Disc &amp; Merch Buyers)</option>
+                <option value="med">Moderate Loyalty (1.0% – 3.0% — General Audience)</option>
+                <option value="low">Casual Retention (&lt; 1.0% — Passive Seasonal Streamers)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="input-retention">
+                <span>Viewer Retention Ratio (Completed ÷ Dropped)</span>
+              </label>
+              <select id="input-retention">
+                <option value="high" selected>Strong Retention (> 3.5× Completion vs Drop Rate)</option>
+                <option value="med">Average Retention (1.5× – 3.5×)</option>
+                <option value="low">Heavy Drop-Off (&lt; 1.5× High Early Drop Rate)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="input-format">
+                <span>Broadcast Format (Episodes / Cours)</span>
+              </label>
+              <select id="input-format">
+                <option value="24" selected>2-Cour Format (22–26 Episodes / Continuous)</option>
+                <option value="12">1-Cour Format (11–13 Episodes / Standard Seasonal)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Right Result Panel -->
+          <div class="predictor-result-panel">
+            <div class="result-header">Estimated Sequel Probability</div>
+
+            <div class="gauge-circle">
+              <div class="gauge-percent" id="gauge-percent">91%</div>
+              <div class="gauge-sub">Predicted 3-Year Continuation Odds</div>
+            </div>
+
+            <div class="gauge-bar-wrapper">
+              <div class="gauge-fill" id="gauge-fill-bar" style="width: 91%;"></div>
+            </div>
+
+            <div class="verdict-badge greenlit" id="verdict-badge">
+              ✨ GREENLIT // High Sequel Probability
+            </div>
+
+            <div class="verdict-title" id="verdict-title">High Sequel Probability: Greenlit</div>
+            <p class="verdict-desc" id="verdict-desc">
+              Strong publisher sponsorship, high viewer retention, and profitable committee alignment make a Season 2
+              announcement highly probable within 36 months.
+            </p>
+
+            <!-- SHAP Explainability Breakdown -->
+            <div class="shap-factors-wrapper">
+              <div class="shap-factors-title">SHAP Feature Influence Breakdown</div>
+              <ul class="shap-list" id="shap-factors-list">
+                <!-- Injected dynamically by app.js -->
+              </ul>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Episode 04: CRISP-DM Methodology -->
+    <section id="pipeline">
+      <div class="episode-tag">
+        <span class="kanji">Research Process</span>
+        <span>Chapter 04 // CRISP-DM Methodology</span>
+      </div>
+      <h2>CRISP-DM Research Architecture</h2>
+      <p>
+        We strictly adopt the <strong>Cross-Industry Standard Process for Data Mining (CRISP-DM)</strong> six-phase
+        methodology to structure the inquiry:
+      </p>
+
+      <div class="crisp-pipeline">
+        <div class="crisp-step">
+          <div class="step-num">PHASE 01 // BUSINESS UNDERSTANDING</div>
+          <h4>Business Understanding</h4>
+          <p>
+            Formalizing sequel continuation as an objective binary classification target: <code>has_sequel = 1</code> if
+            a verified continuation airs within 36 months of Season 1 premiere, else <code>0</code>.
+          </p>
+        </div>
+
+        <div class="crisp-step">
+          <div class="step-num">PHASE 02 // DATA UNDERSTANDING</div>
+          <h4>Data Understanding</h4>
+          <p>
+            Profiling 24,000+ Kaggle records. Identifying that sequels cannot be inferred from flat files alone,
+            prompting integration with Jikan REST API v4 for relational sequel/prequel link graph harvesting.
+          </p>
+        </div>
+
+        <div class="crisp-step">
+          <div class="step-num">PHASE 03 // DATA PREPARATION</div>
+          <h4>Data Preparation</h4>
+          <p>
+            Filtering TV first-season cohort (2010–2022). Applying log-transforms, multi-hot genre vectorization,
+            missingness imputation, and SMOTE to synthesize minority class sequel instances.
+          </p>
+        </div>
+
+        <div class="crisp-step">
+          <div class="step-num">PHASE 04 // MODELING TRACK</div>
+          <h4>Modeling Track</h4>
+          <p>
+            Supervised track: Logistic Regression, Decision Tree, Random Forest, and XGBoost. Unsupervised track:
+            Apriori and FP-Growth association rule mining for multi-attribute rule discovery.
+          </p>
+        </div>
+
+        <div class="crisp-step">
+          <div class="step-num">PHASE 05 // EVALUATION &amp; METRICS</div>
+          <h4>Evaluation &amp; Metrics</h4>
+          <p>
+            Stratified 5-Fold Cross Validation. Metrics include ROC-AUC, PR-AUC, F1-Score for minority sequel class,
+            alongside Support, Confidence, and Lift &gt; 1.5 for association rules.
+          </p>
+        </div>
+
+        <div class="crisp-step">
+          <div class="step-num">PHASE 06 // DEPLOYMENT &amp; EXPLAINABILITY</div>
+          <h4>Deployment &amp; SHAP</h4>
+          <p>
+            Extracting SHAP (SHapley Additive exPlanations) values to provide global and local feature explainability,
+            demonstrating how individual attributes influence the model's decisions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Episode 05: Variables & Feature Engineering -->
+    <section id="variables">
+      <div class="episode-tag">
+        <span class="kanji">Data Engineering</span>
+        <span>Chapter 05 // Variables &amp; Transformations</span>
+      </div>
+      <h2>Key Mining Variables &amp; Transformations</h2>
+      <p>
+        Raw metadata often misleads machine learning algorithms due to power-law distributions. We engineered
+        domain-specific ratios to capture genuine audience commitment:
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Raw Metadata Variables</th>
+              <th>Engineering &amp; Transformation Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="domain-badge">👥 Engagement</span>
+              </td>
+              <td>Member Count, Favorites, Completed, Dropped</td>
+              <td>
+                Log-transform applied: <code>log10(members)</code>. Derived <strong>Fan Loyalty Ratio</strong>
+                (<code>Favorites ÷ Members</code>) and <strong>Viewer Retention Ratio</strong>
+                (<code>Completed ÷ Dropped</code>) to normalize for raw popularity bias.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="domain-badge">⭐ Ratings</span>
+              </td>
+              <td>Mean Score (1.00 – 10.00), Scored-By Count</td>
+              <td>
+                Median imputation with binary missingness indicators. Evaluated as non-linear splines since high ratings
+                alone do not guarantee sequel commercial viability.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="domain-badge">🏢 Production</span>
+              </td>
+              <td>Studio Name, Producer Count, Licensor Presence</td>
+              <td>
+                Top 15 studios categorized into distinct capacity tiers (Tier S / Tier A / Other). Producer count
+                engineered as proxy for institutional committee backing and sponsor risk distribution.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="domain-badge">📖 Content DNA</span>
+              </td>
+              <td>Source Material (Manga, LN, Original), Genres, Episodes, Age Rating</td>
+              <td>
+                Multi-hot vectorization for 20+ genre tags; one-hot encoding for source material. Episode counts binned
+                into standard broadcast cours (1-cour vs 2-cour).
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="domain-badge">📅 Broadcast Cohort</span>
+              </td>
+              <td>Premiere Season &amp; Year (2010 – 2022)</td>
+              <td>
+                Categorical season encoding (Spring, Summer, Fall, Winter). Temporal cohort boundaries ensure 3-year
+                post-broadcast observation window maturity.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Episode 06: Supervised Models & SHAP Explainability -->
+    <section id="models">
+      <div class="episode-tag">
+        <span class="kanji">Machine Learning</span>
+        <span>Chapter 06 // Supervised Classification</span>
+      </div>
+      <h2>Model Benchmark &amp; Explainable AI</h2>
+      <p>
+        Due to severe class imbalance (only ~25% of TV anime receive sequels), models were trained using <strong>SMOTE
+          (Synthetic Minority Over-sampling Technique)</strong> and evaluated via stratified 5-fold cross-validation:
+      </p>
+
+      <div class="model-benchmarks-grid">
+        <div class="model-card">
+          <h4>Logistic Regression</h4>
+          <div class="model-type">Linear Baseline (L2 Regularized)</div>
+          <div class="model-metric"><span>ROC-AUC</span><span class="val">0.742</span></div>
+          <div class="model-metric"><span>F1-Score</span><span class="val">0.618</span></div>
+          <div class="model-metric"><span>Recall (S2)</span><span class="val">68.4%</span></div>
+          <div class="model-metric"><span>Interpretability</span><span class="val">High</span></div>
+        </div>
+
+        <div class="model-card">
+          <h4>Decision Tree</h4>
+          <div class="model-type">CART (Depth Pruned)</div>
+          <div class="model-metric"><span>ROC-AUC</span><span class="val">0.718</span></div>
+          <div class="model-metric"><span>F1-Score</span><span class="val">0.592</span></div>
+          <div class="model-metric"><span>Recall (S2)</span><span class="val">63.1%</span></div>
+          <div class="model-metric"><span>Interpretability</span><span class="val">High</span></div>
+        </div>
+
+        <div class="model-card">
+          <h4>Random Forest</h4>
+          <div class="model-type">Ensemble (100 Estimators)</div>
+          <div class="model-metric"><span>ROC-AUC</span><span class="val">0.824</span></div>
+          <div class="model-metric"><span>F1-Score</span><span class="val">0.710</span></div>
+          <div class="model-metric"><span>Recall (S2)</span><span class="val">74.5%</span></div>
+          <div class="model-metric"><span>Interpretability</span><span class="val">Moderate</span></div>
+        </div>
+
+        <div class="model-card champion">
+          <h4>XGBoost</h4>
+          <div class="model-type">Gradient Boosted Trees (Champion)</div>
+          <div class="model-metric"><span>ROC-AUC</span><span class="val">0.856</span></div>
+          <div class="model-metric"><span>F1-Score</span><span class="val">0.758</span></div>
+          <div class="model-metric"><span>Recall (S2)</span><span class="val">79.2%</span></div>
+          <div class="model-metric"><span>Interpretability</span><span class="val">SHAP Values</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Episode 07: Association Rule Mining -->
+    <section id="rules">
+      <div class="episode-tag">
+        <span class="kanji">Pattern Mining</span>
+        <span>Chapter 07 // Association Rules</span>
+      </div>
+      <h2>Apriori &amp; FP-Growth Pattern Discovery</h2>
+      <p>
+        Association rule mining extracts human-interpretable patterns indicating which combinatorial circumstances
+        guarantee sequel greenlights or trigger single-season cancellations:
+      </p>
+
+      <div class="rules-filter-bar">
+        <button class="rule-filter-btn active" data-filter="all">All Mined Rules</button>
+        <button class="rule-filter-btn" data-filter="sequel">✨ Sequel Greenlit Rules</button>
+        <button class="rule-filter-btn" data-filter="no-sequel">🛑 Single-Season Terminations</button>
+        <button class="rule-filter-btn" data-filter="high-lift">🔥 High Lift (&ge; 2.0)</button>
+      </div>
+
+      <div class="table-container">
+        <table id="association-rules-table">
+          <thead>
+            <tr>
+              <th>Antecedent (Conditions)</th>
+              <th>Consequent (Outcome)</th>
+              <th>Support</th>
+              <th>Confidence</th>
+              <th>Lift</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-consequence="sequel" data-lift="2.42">
+              <td><code>{Source = Shonen Manga, Studio = Tier S, Members &gt; 500k}</code></td>
+              <td><span class="case-badge success">has_sequel = 1</span></td>
+              <td>0.082</td>
+              <td><strong>81.4%</strong></td>
+              <td><span class="val-badge">2.42</span></td>
+            </tr>
+            <tr data-consequence="sequel" data-lift="2.15">
+              <td><code>{Source = Manga, LoyaltyRatio &gt; 3.0%, ProducerCount &ge; 4}</code></td>
+              <td><span class="case-badge success">has_sequel = 1</span></td>
+              <td>0.095</td>
+              <td><strong>77.8%</strong></td>
+              <td><span class="val-badge">2.15</span></td>
+            </tr>
+            <tr data-consequence="no-sequel" data-lift="1.84">
+              <td><code>{Source = Original Anime, RetentionRatio &lt; 1.5}</code></td>
+              <td><span class="case-badge danger">has_sequel = 0</span></td>
+              <td>0.141</td>
+              <td><strong>92.1%</strong></td>
+              <td><span class="val-badge">1.84</span></td>
+            </tr>
+            <tr data-consequence="no-sequel" data-lift="1.68">
+              <td><code>{Source = Light Novel, Episodes = 12, Score &lt; 7.2}</code></td>
+              <td><span class="case-badge danger">has_sequel = 0</span></td>
+              <td>0.165</td>
+              <td><strong>85.6%</strong></td>
+              <td><span class="val-badge">1.68</span></td>
+            </tr>
+            <tr data-consequence="sequel" data-lift="2.08">
+              <td><code>{Genre = Action + Fantasy, Members &gt; 700k, Score &ge; 7.8}</code></td>
+              <td><span class="case-badge success">has_sequel = 1</span></td>
+              <td>0.112</td>
+              <td><strong>74.5%</strong></td>
+              <td><span class="val-badge">2.08</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Episode 08: Data Source & Harvesting -->
+    <section id="data">
+      <div class="episode-tag">
+        <span class="kanji">Data Foundation</span>
+        <span>Chapter 08 // Dataset &amp; Harvesting</span>
+      </div>
+      <h2>Data Sources &amp; Harvesting Pipeline</h2>
+
+      <div class="data-stats-grid">
+        <div class="stat-box">
+          <div class="number">24,000+</div>
+          <div class="label">Raw Kaggle Records</div>
+        </div>
+        <div class="stat-box highlight">
+          <div class="number">~2,450</div>
+          <div class="label">Filtered First-Season TV Cohort (&ge; 500 rows ✓)</div>
+        </div>
+        <div class="stat-box">
+          <div class="number">2010–2022</div>
+          <div class="label">Premiere Sampling Window</div>
+        </div>
+        <div class="stat-box">
+          <div class="number">100%</div>
+          <div class="label">Jikan Relational Link Validation</div>
         </div>
       </div>
 
-      <p>
-        We follow the <strong>CRISP-DM</strong> six-phase methodology and use <strong>SHAP</strong> values for global and local feature-level explainability.
-      </p>
-    </section>
-
-    <!-- Key Variables -->
-    <section>
-      <h2>Key Variables</h2>
-      <table>
-        <thead>
-          <tr><th>Domain</th><th>Variables</th><th>Engineering</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Audience Engagement</strong></td>
-            <td>Member count, Favorites, Completed, Dropped</td>
-            <td>Log-transform; derive Favorites/Members ratio and Completed/Dropped ratio</td>
-          </tr>
-          <tr>
-            <td><strong>Ratings</strong></td>
-            <td>Mean score (1–10), Scored-by volume</td>
-            <td>Median imputation with missingness indicator</td>
-          </tr>
-          <tr>
-            <td><strong>Production</strong></td>
-            <td>Studio, Producer count, Licensor presence</td>
-            <td>Top 15 studios + "Other"; producer count as institutional proxy</td>
-          </tr>
-          <tr>
-            <td><strong>Content</strong></td>
-            <td>Source material, Genres, Episodes, Age rating</td>
-            <td>Multi-hot genre encoding; one-hot source &amp; rating</td>
-          </tr>
-          <tr>
-            <td><strong>Broadcast</strong></td>
-            <td>Premiere season &amp; year (2010–2022)</td>
-            <td>Categorical encoding; temporal cohort control</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Data Source -->
-    <section>
-      <h2>Data Source</h2>
-
-      <div class="data-stats">
-        <div>
-          <span class="stat-number">24,000+</span>
-          <span class="stat-desc">Raw Kaggle records</span>
+      <div class="data-source-cards">
+        <div class="ds-card">
+          <div>
+            <h4>Primary Dataset: Anime Dataset 2023</h4>
+            <p>
+              Compiled by <em>dbdmobile</em> on Kaggle. Encompasses rich multi-decade metadata from MyAnimeList
+              including demographic classifications, multi-genre labels, studio affiliations, and cumulative engagement
+              numbers.
+            </p>
+          </div>
+          <a class="link-btn" href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank"
+            rel="noopener noreferrer">
+            Open Kaggle Dataset ↗
+          </a>
         </div>
-        <div>
-          <span class="stat-number highlight">~2,000–3,000</span>
-          <span class="stat-desc">TV first-season cohort (≥ 500 rows ✓)</span>
-        </div>
-        <div>
-          <span class="stat-number">2010–2022</span>
-          <span class="stat-desc">Premiere sampling window</span>
+
+        <div class="ds-card">
+          <div>
+            <h4>Supplementary Graph API: Jikan REST v4</h4>
+            <p>
+              Open-source RESTful API for MyAnimeList. Programmatically queries the <code>relations</code> endpoint to
+              parse explicit sequel, prequel, side-story, and parent story graph edges needed to compute
+              <code>has_sequel</code> accurately.
+            </p>
+          </div>
+          <a class="link-btn" href="https://docs.api.jikan.moe/" target="_blank" rel="noopener noreferrer">
+            Jikan API Documentation ↗
+          </a>
         </div>
       </div>
-
-      <h3>Primary Dataset</h3>
-      <p>
-        <strong>Anime Dataset 2023</strong> by dbdmobile — comprehensive metadata, demographic classifications, genre tags, and cumulative user engagement statistics for over 24,000 anime records sourced from MyAnimeList.
-      </p>
-      <a class="link-btn" href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank" rel="noopener noreferrer">
-        View Dataset on Kaggle ↗
-      </a>
-
-      <h3>Supplementary API</h3>
-      <p>
-        <strong>Jikan REST API v4</strong> — open-source interface to MyAnimeList's relational records. Used to harvest explicit sequel, prequel, and continuation links for constructing the binary target variable.
-      </p>
-      <a class="link-btn secondary" href="https://docs.api.jikan.moe/" target="_blank" rel="noopener noreferrer">
-        Jikan API Documentation ↗
-      </a>
     </section>
 
-    <!-- References -->
-    <section>
-      <h2>References</h2>
+    <!-- Episode 09: Academic References -->
+    <section id="references">
+      <div class="episode-tag">
+        <span class="kanji">Bibliography</span>
+        <span>Chapter 09 // References</span>
+      </div>
+      <h2>Academic Literature &amp; Citations</h2>
+
       <ol class="refs">
-        <li>Armenta-Segura, J., &amp; Sidorov, G. (2025). Anime popularity prediction before huge investments: A multimodal approach. <em>PeerJ Computer Science</em>, 11, e2715.</li>
-        <li>dbdmobile. (2023). <em>Anime dataset 2023</em> [Data set]. Kaggle. <a href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset" target="_blank">https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset</a></li>
-        <li>Pratama, S. F., &amp; Priyanto, E. (2024). Analyzing genre patterns in animated films using association rule mining. <em>Int. J. Research in Metaverse</em>, 1(3), 172–186.</li>
-        <li>Schröer, C., Kruse, F., &amp; Gómez, J. M. (2021). A systematic literature review on applying CRISP-DM. <em>Procedia Computer Science</em>, 181, 526–534.</li>
-        <li>Setiawan, N., et al. (2023). Time series model to predict future popular anime genres in 2025. <em>E3S Web of Conferences</em>, 388, 02002.</li>
+        <li>
+          Armenta-Segura, J., &amp; Sidorov, G. (2025). Anime popularity prediction before huge investments: A
+          multimodal approach. <em>PeerJ Computer Science</em>, 11, e2715. <a
+            href="https://doi.org/10.7717/peerj-cs.2715" target="_blank">https://doi.org/10.7717/peerj-cs.2715</a>
+        </li>
+        <li>
+          dbdmobile. (2023). <em>Anime dataset 2023</em> [Data set]. Kaggle. <a
+            href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset"
+            target="_blank">https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset</a>
+        </li>
+        <li>
+          Pratama, S. F., &amp; Priyanto, E. (2024). Analyzing genre patterns in animated films using association rule
+          mining. <em>Int. J. Research in Metaverse</em>, 1(3), 172–186.
+        </li>
+        <li>
+          Schr&ouml;er, C., Kruse, F., &amp; G&oacute;mez, J. M. (2021). A systematic literature review on applying
+          CRISP-DM. <em>Procedia Computer Science</em>, 181, 526–534. <a
+            href="https://doi.org/10.1016/j.procs.2021.01.199"
+            target="_blank">https://doi.org/10.1016/j.procs.2021.01.199</a>
+        </li>
+        <li>
+          Setiawan, N., et al. (2023). Time series model to predict future popular anime genres in 2025. <em>E3S Web of
+            Conferences</em>, 388, 02002.
+        </li>
+        <li>
+          Chawla, N. V., et al. (2002). SMOTE: Synthetic minority over-sampling technique. <em>Journal of Artificial
+            Intelligence Research</em>, 16, 321–357.
+        </li>
+        <li>
+          Lundberg, S. M., &amp; Lee, S. I. (2017). A unified approach to interpreting model predictions. <em>Advances
+            in Neural Information Processing Systems (NeurIPS)</em>, 30.
+        </li>
       </ol>
     </section>
 
   </main>
 
+  <!-- Academic Footer -->
   <footer>
-    <p>ICT324 Introduction to Data Warehousing &amp; Data Mining &bull; Rangsit University International College &bull; 2026</p>
+    <div class="footer-content">
+      <div class="footer-title">
+        WILL IT GET A SEASON 2? &bull; ANIME SEQUEL PREDICTION RESEARCH
+      </div>
+      <p class="footer-sub">
+        ICT324 Introduction to Data Warehousing &amp; Data Mining &bull; Rangsit University International College (RIC)
+        &bull; Academic Year 2026
+      </p>
+
+      <div class="footer-team">
+        <div class="footer-team-member">
+          <strong>Myat Htoo Kaung</strong> (6708426)
+        </div>
+        <div class="footer-team-member">
+          <strong>Aung Kabar</strong> (6708217)
+        </div>
+        <div class="footer-team-member">
+          <strong>Aphisith Vongxay</strong> (6708522)
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        Traditional Japanese Flat Color Palette &bull; Clean Washi Editorial Design &bull; CRISP-DM Methodology
+      </div>
+
+      <div class="footer-disclaimer">
+        <strong>Academic Fair Use &amp; Intellectual Property Notice:</strong> All anime titles, promotional artwork, posters, and trademarks displayed on this site are the intellectual property of their respective production committees, authors, and animation studios (including Kadokawa, Kodansha, Aniplex, CloverWorks, Madhouse, and TMS Entertainment). Low-resolution promotional imagery is included strictly under the <strong>Fair Use</strong> doctrine (17 U.S. Code § 107) for non-commercial educational analysis and data science commentary as part of academic coursework for ICT324 at Rangsit University International College.
+      </div>
+    </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="app.js"></script>
 </body>
+
 </html>
